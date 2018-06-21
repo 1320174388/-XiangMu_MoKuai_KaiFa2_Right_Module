@@ -150,4 +150,4 @@ class RightDao
         $add->all();
         return returnData('success',true);
     }
-}               1    tj          2   sc            3   xg
+}  
