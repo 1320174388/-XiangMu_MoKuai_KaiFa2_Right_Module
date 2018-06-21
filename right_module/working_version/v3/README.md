@@ -93,21 +93,21 @@ Right_Module : 权限管理模块目录
 <br/>
 ### `功能：获取所有管理员数据`
 ### `传值：get`
-### `接口：/v3/right_module/admin_route`
+### `接口：/v3/right_module/admin_route/:token`
 ### `参数：token       => '管理员Token标识，写在url中'`
 ### `响应：{"errNum":0,"retMsg":"请求成功","retData":"数据"}`
 ### `响应：{"errNum":1,"retMsg":"请求失败","retData":false}`
 <br/>
 ### `功能：获取职位信息`
 ### `传值：get`
-### `接口：/v3/right_module/role_route`
+### `接口：/v3/right_module/role_route/:token`
 ### `参数：token       => '管理员Token标识，写在url中'`
 ### `响应：{"errNum":0,"retMsg":"请求成功","retData":"数据"}`
 ### `响应：{"errNum":1,"retMsg":"请求失败","retData":false}`
 <br/>	
 ### `功能：修改管理员职位信息`
 ### `传值：put`
-### `接口：/v3/right_module/admin_init/:applyToken`
+### `接口：/v3/right_module/admin_route/:token`
 ### `参数：token       => '管理员Token标识，写在url中'`
 ### `参数：adminToken  => '要求改的管理员Token标识'`
 ### `参数：roleString  => '职位标识字符串，逗号隔开'`
