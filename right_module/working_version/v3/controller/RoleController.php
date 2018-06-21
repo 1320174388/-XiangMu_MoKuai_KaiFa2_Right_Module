@@ -72,13 +72,15 @@ class RoleController extends Controller
      * 输  出 : {"errNum":0,"retMsg":"更新成功","retData":true}
      * 创  建 : 2018/06/19 15:49
      */
-    public function roleEdit($index,Request $request)
+    public function roleEdit(Request $request)
     {
         // 获取传值
+        $index     = $request->put('index');
         $roleName  = $request->put('roleName');
         $roleInfo  = $request->put('roleInfo');
         $rightStr  = $request->put('rightStr');
         // 验证数据
+        if( !$index )  return returnResponse(1,'请输入职位标识');
         if(!$roleName) return returnResponse(1,'请输入职位名称');
         if(!$rightStr) return returnResponse(2,'请选择权限');
         if(!$roleInfo) $roleInfo = '';
@@ -98,8 +100,12 @@ class RoleController extends Controller
      * 输  出 : {"errNum":0,"retMsg":"删除成功","retData":true}
      * 创  建 : 2018/06/19 15:49
      */
-    public function roleDel($index)
+    public function roleDel(Request $request)
     {
+        // 获取传值
+        $index     = $request->put('index');
+        // 验证数据
+        if( !$index )  return returnResponse(1,'请输入职位标识');
         // 引入RoleService逻辑
         $res=(new RoleService)->delRole($index);
         // 验证返回数据

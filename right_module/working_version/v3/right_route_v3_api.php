@@ -47,20 +47,20 @@ Route::group('v3/right_module/', function(){
      * 传值方式：GET 路由功能：获取管理员申请表数据
      */
     Route::get(
-        'apply_list','right_module/v3.controller.ApplyController/applyList'
+        'apply_list/:token','right_module/v3.controller.ApplyController/applyList'
     );
     /**
      * 传值方式：POST 路由功能：执行添加管理员操作
      */
     Route::post(
-        'admin_init/:applyToken',
+        'admin_init/:token',
         'right_module/v3.controller.AdminController/adminInit'
     );
     /**
      * 传值方式：GET 路由功能：获取所有管理员数据
      */
     Route::get(
-        'admin_route','right_module/v3.controller.AdminController/adminGet'
+        'admin_route/:token','right_module/v3.controller.AdminController/adminGet'
     );
     /**
      * 传值方式：PUT 路由功能：执行修改管理员职位
@@ -80,56 +80,56 @@ Route::group('v3/right_module/', function(){
      * 传值方式：POST 路由功能：执行添加权限操作
      */
     Route::post(
-        'right_route',
+        'right_route/:token',
         'right_module/v3.controller.RightController/rightAddRoute'
     );
     /**
      * 传值方式：GET 路由功能：获取所有权限操作
      */
     Route::get(
-        'right_route',
+        'right_route/:token',
         'right_module/v3.controller.RightController/rightGetRoute'
     );
     /**
-     * 传值方式：PUT 路由功能：更新index对应权限
+     * 传值方式：PUT 路由功能：更新权限操作
      */
     Route::put(
-        'right_route/:index',
+        'right_route/:token',
         'right_module/v3.controller.RightController/rightEditRoute'
     );
     /**
-     * 传值方式：DELETE 路由功能：删除index对应权限
+     * 传值方式：DELETE 路由功能：删除权限操作
      */
     Route::delete(
-        'right_route/:index',
+        'right_route/:token',
         'right_module/v3.controller.RightController/rightDelRoute'
     );
     /**
      * 传值方式：POST 路由功能：添加职位
      */
     Route::post(
-        'role_route',
+        'role_route/:token',
         'right_module/v3.controller.RoleController/roleAdd'
     );
     /**
      * 传值方式：GET 路由功能：获取所有职位信息
      */
     Route::get(
-        'role_route',
+        'role_route/:token',
         'right_module/v3.controller.RoleController/roleGet'
     );
     /**
-     * 传值方式：PUT 路由功能：获取所有职位信息
+     * 传值方式：PUT 路由功能：修改职位信息
      */
     Route::put(
-        'role_route/:index',
+        'role_route/:token',
         'right_module/v3.controller.RoleController/roleEdit'
     );
     /**
      * 传值方式：DELETE 路由功能：删除职位信息
      */
     Route::delete(
-        'role_route/:index',
+        'role_route/:token',
         'right_module/v3.controller.RoleController/roleDel'
     );
 })->middleware('Right_v3_IsAdmin');

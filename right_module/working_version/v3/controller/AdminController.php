@@ -23,11 +23,13 @@ class AdminController extends Controller
      * 输  出 : {"errNum":0,"retMsg":"设置成功","retData":true}
      * 创  建 : 2018/06/16 21:49
      */
-    public function adminInit($applyToken,Request $request)
+    public function adminInit(Request $request)
     {
         // 获取职位数据
+        $applyToken = $request->post('applyToken');
         $roleString = $request->post('roleString');
         // 验证数据
+        if(!$applyToken) return returnResponse(1,'请发送标识');
         if(!$roleString) return returnResponse(1,'请选择职位');
         // 引入Service逻辑层数据
         $admin = (new AdminService())->rightAdmin($applyToken,$roleString);
@@ -93,14 +95,18 @@ class AdminController extends Controller
      * 名  称 : adminDel()
      * 功  能 : 删除管理员操作
      * 变  量 : --------------------------------------
-     * 输  入 : (string) $token => '用户标识';
+     * 输  入 : (string) $admintoken => '用户标识';
      * 输  出 : {"errNum":0,"retMsg":"删除成功","retData":true}
      * 创  建 : 2018/06/20 02:01
      */
-    public function adminDel($token)
+    public function adminDel(Request $request)
     {
+        // 获取数据
+        $adminToken = $request->put('adminToken');
+        // 验证数据
+        if(!$adminToken) return returnResponse(1,'请发送标识');
         // 执行删除管理员逻辑
-        $res = (new AdminService())->delAdmin($token);
+        $res = (new AdminService())->delAdmin($adminToken);
         // 验证删除逻辑
         if($res['msg']=='error') return returnResponse(1,'删除失败');
         // 返回数据格式
@@ -111,19 +117,21 @@ class AdminController extends Controller
      * 名  称 : adminEdit()
      * 功  能 : 执行修改管理员操作
      * 变  量 : --------------------------------------
-     * 输  入 : (string) $token      => '用户标识';
+     * 输  入 : (string) $adminToken      => '用户标识';
      * 输  入 : (string) $roleString => '职位标识字符串，逗号隔开';
      * 输  出 : {"errNum":0,"retMsg":"设置成功","retData":true}
      * 创  建 : 2018/06/20 06:20
      */
-    public function adminEdit($token,Request $request)
+    public function adminEdit(Request $request)
     {
         // 获取职位数据
+        $adminToken = $request->put('adminToken');
         $roleString = $request->put('roleString');
         // 验证数据
+        if(!$adminToken) return returnResponse(1,'请发送标识');
         if(!$roleString) return returnResponse(1,'请选择职位');
         // 引入Service逻辑层数据
-        $admin = (new AdminService())->editRight($token,$roleString);
+        $admin = (new AdminService())->editRight($adminToken,$roleString);
         // 判断是否设置成功
         if($admin['msg']=='error') return returnResponse(2,$admin['data']);
         // 返回接口响应数据

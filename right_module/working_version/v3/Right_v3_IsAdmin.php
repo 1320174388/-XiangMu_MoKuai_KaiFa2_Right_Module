@@ -31,7 +31,7 @@ class Right_v3_IsAdmin
         // 判断是不是管理员
         $admin = AdminModel::get($token);
         // 判断是否有权限
-        if (($token!=$user['user_token'])||(!$admin)) {
+        if (($token!=$user['user_token'])&&(!$admin)) {
             return redirect('v3/right_module/return_right');
         }
         // 执行控制器代码

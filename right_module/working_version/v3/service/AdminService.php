@@ -11,6 +11,7 @@ namespace app\right_module\working_version\v3\service;
 use \think\Db;
 use app\right_module\working_version\v3\dao\ApplyDao;
 use app\right_module\working_version\v3\dao\AdminDao;
+use app\right_module\working_version\v3\dao\UserDao;
 
 class AdminService
 {
@@ -75,6 +76,13 @@ class AdminService
      */
     public function getUserAdmin($token)
     {
+        // 获取最高管理员数据
+        $user = (new UserDao())->UserSelect();
+        // 验证数据
+        if($user['msg']=='success'){
+            if($token==$user['data']['user_token'])
+            return returnData('success',$user['data']);
+        }
         // 获取管理员数据
         $info = (new AdminDao())->adminSelect($token);
         // 验证数据格式
