@@ -166,7 +166,7 @@ Right_Module : 权限管理模块目录
 <br/>	
 ### `功能：删除职位信息`
 ### `传值：delete`
-### `接口：/v3/right_module/role_route/:index`
+### `接口：/v3/right_module/role_route/:token`
 ### `参数：token    => '管理员Token标识，写在url中'`
 ### `参数：index    => '要删除的职位标识'`
 ### `响应：{"errNum":0,"retMsg":"删除成功","retData":true}`
@@ -186,7 +186,7 @@ Right_Module : 权限管理模块目录
 <br/>	
 ### `功能： 更新项目管理权限，前端开发接口，不给用户使用`
 ### `传值：put`
-### `接口：/v3/right_module/right_route/:index`
+### `接口：/v3/right_module/right_route/:token`
 ### `参数：token      => '管理员Token标识，写在url中'`
 ### `参数：index      => '要更新的权限标识'`
 ### `参数：rightName  => '权限名称'`
@@ -198,7 +198,7 @@ Right_Module : 权限管理模块目录
 <br/>	
 ### `功能： 删除项目管理权限，前端开发接口，不给用户使用`
 ### `传值：delete`
-### `接口：/v3/right_module/right_route/:index`
+### `接口：/v3/right_module/right_route/:token`
 ### `参数：token => '管理员Token标识，写在url中'`
 ### `参数：index => '要删除的权限标识'`
 ### `响应：{"errNum":0,"retMsg":"删除成功","retData":true}`
