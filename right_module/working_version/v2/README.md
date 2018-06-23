@@ -46,7 +46,7 @@ Right_Module : 权限管理模块目录
 
 ### `功能：用户申请成为管理员`
 ### `传值：post`
-### `接口：/v3/right_module/apply_init`
+### `接口：/v2/right_module/apply_init`
 ### `参数：userToken  => '用户身份标识'`
 ### `参数：applyName  => '用户名称'`
 ### `参数：applyPhone => '用户电话'`
@@ -58,20 +58,20 @@ Right_Module : 权限管理模块目录
 <br/>
 ### `功能：判断用户是不是管理员`
 ### `传值：get`
-### `接口：/v3/right_module/is_admin/:token`
+### `接口：/v2/right_module/is_admin/:token`
 ### `响应：{"errNum":0,"retMsg":"请求成功","retData":true}`
 ### `响应：{"errNum":1,"retMsg":"请求失败","retData":false}`
 <br/>
 ### `功能：获取要申请成为管理员的用户信息`
 ### `传值：get`
-### `接口：/v3/right_module/apply_list/:token`
+### `接口：/v2/right_module/apply_list/:token`
 ### `参数：token  => '管理员Token标识，写在url中'`
 ### `响应：{"errNum":0,"retMsg":"请求成功","retData":"申请表数据"}`
 ### `响应：{"errNum":1,"retMsg":"请求失败","retData":false}`
 <br/>
 ### `功能：将申请成为管理员的用户，审核通过为管理员`
 ### `传值：post`
-### `接口：/v3/right_module/admin_init/:token`
+### `接口：/v2/right_module/admin_init/:token`
 ### `参数：token       => '管理员Token标识，写在url中'`
 ### `参数：applyToken  => '申请人Token标识'`
 ### `参数：roleString  => '职位标识字符串，逗号隔开'`
@@ -80,14 +80,14 @@ Right_Module : 权限管理模块目录
 <br/>
 ### `功能：获取所有管理员数据`
 ### `传值：get`
-### `接口：/v3/right_module/admin_route/:token`
+### `接口：/v2/right_module/admin_route/:token`
 ### `参数：token       => '管理员Token标识，写在url中'`
 ### `响应：{"errNum":0,"retMsg":"请求成功","retData":"数据"}`
 ### `响应：{"errNum":1,"retMsg":"请求失败","retData":false}`
 <br/>	
 ### `功能：删除管理员信息`
 ### `传值：delete`
-### `接口：/v3/right_module/admin_route/:token`
+### `接口：/v2/right_module/admin_route/:token`
 ### `参数：token       => '管理员Token标识，写在url中'`
 ### `参数：adminToken  => '要删除的管理员Token标识'`
 ### `响应：{"errNum":0,"retMsg":"删除成功","retData":true}`
