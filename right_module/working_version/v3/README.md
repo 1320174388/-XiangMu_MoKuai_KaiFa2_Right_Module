@@ -39,9 +39,9 @@ Right_Module : 权限管理模块目录
 ### `文件：/right_module/working_version/v3/right_route_v3_api.php`
 ### `说明：保存到项目 /route 目录下,路由自动生效`
 <br/>
-### `文件：/right_module/working_version/v3/right_v1_sql.php`
+### `文件：/right_module/working_version/v3/right_v3_sql.php`
 ### `说明：需要修改配置数组信息，对应项目的数据表名，库名`
-### `使用：执行命令 php right_v1_sql.php 自动生成数据表`
+### `使用：执行命令 php right_v3_sql.php 自动生成数据表`
 <br/>
 ### `文件：/right_module/working_version/v3/Right_v3_IsAdmin.php`
 ### `说明：验证是不是管理员的中间件，如使用请参考ThinkPHP5.1中间件使用`
