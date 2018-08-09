@@ -9,9 +9,11 @@
  */
 namespace app\right_module\working_version\v3\service;
 use \think\Db;
+use app\right_module\working_version\v3\model\UserModel;
 use app\right_module\working_version\v3\dao\ApplyDao;
 use app\right_module\working_version\v3\dao\AdminDao;
 use app\right_module\working_version\v3\dao\UserDao;
+use app\right_module\working_version\v3\library\PushLibrary;
 
 class AdminService
 {
@@ -39,6 +41,28 @@ class AdminService
             // 添加管理员
             $admin = (new AdminDao)->adminCreate($data['data'],$roletArr);// 返回数据格式
             if($admin['msg']=='error') return returnData('error','审核失败');
+
+            // 获取用户openid
+            $user = UserModel::where('user_token',$token)->find();
+            // 实例化发送模板消息类库
+            $pushLibrary = new PushLibrary();
+            // 处理模板消息数据
+            $data = [
+                'touser'           => $user['user_openid'],
+                'template_id'      => config('wx_config.wx_Push_Adopt'),
+                'page'             => '/pages/index/index',
+                'form_id'          => $data['data']['apply_formid'],
+                'data'             => [
+                    'keyword1'=>['value'=>'申请中春果业管理员'],
+                    'keyword2'=>['value'=>$data['data']['apply_name']],
+                    'keyword3'=>['value'=>$data['data']['apply_phone']],
+                    'keyword4'=>['value'=>'已通过'],
+                    'keyword5'=>['value'=>date('Y-m-d H:i',time())],
+                ],
+            ];
+            // 发送模板消息
+            $pushLibrary->sendTemplate($data);
+
             // 提交事务
             Db::commit();
             // 返回数据格式

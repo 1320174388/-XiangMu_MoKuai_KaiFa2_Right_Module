@@ -8,21 +8,21 @@
  *  历史记录 :  -----------------------
  */
     $config = [
-        'host'      => '127.0.0.1',          // 数据库地址
-        'port'      => '3306',               // 数据库端口
-        'database'  => 'dlth_xm_v1',         // 数据库名称
-        'charset'   => 'utf8',               // 设置字符集
-        'user'      => 'root',               // 用户名称
-        'password'  => '',                   // 用户密码
+        'host'      => '', // 数据库地址
+        'port'      => '',                              // 数据库端口
+        'database'  => '',             // 数据库名称
+        'charset'   => '',                               // 设置字符集
+        'user'      => '',                               // 用户名称
+        'password'  => '',                     // 用户密码
     ];
 
     $table = [
-        'adminApply' => 'dlth_data_admin_applys', // 管理员申请表
-        'adminList'  => 'dlth_data_admin_lists',  // 管理员表
-        'rightList'  => 'dlth_data_right_lists',  // 权限表
-        'roleList'   => 'dlth_data_role_lists',   // 职位表
-        'adminRole'  => 'dlth_index_admin_roles', // 管理_职位_关联表
-        'roleRight'  => 'dlth_index_role_rights', // 职位_权限_关联表
+        'adminApply' => 'data_admin_applys', // 管理员申请表
+        'adminList'  => 'data_admin_lists',  // 管理员表
+        'rightList'  => 'data_right_lists',  // 权限表
+        'roleList'   => 'data_role_lists',   // 职位表
+        'adminRole'  => 'index_admin_roles', // 管理_职位_关联表
+        'roleRight'  => 'index_role_rights', // 职位_权限_关联表
     ];
 
 	$date     =  date('Y-m-d H:i:s',time());
@@ -73,7 +73,8 @@
 		$pdo->exec('create table '.$table['adminApply'].'(
 			apply_token varchar(50) primary key,
             apply_name varchar(50),
-			apply_phone varchar(50) unique,
+            apply_phone varchar(50) unique,
+			apply_formid varchar(50),
 			apply_time varchar(50)
 		);');
 		echo '

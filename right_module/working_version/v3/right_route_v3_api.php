@@ -47,7 +47,15 @@ Route::group('v3/right_module/', function(){
      * 传值方式：GET 路由功能：获取管理员申请表数据
      */
     Route::get(
-        'apply_list/:token','right_module/v3.controller.ApplyController/applyList'
+        'apply_list/:token',
+        'right_module/v3.controller.ApplyController/applyList'
+    );
+    /**
+     * 传值方式：DELETE 路由功能：删除管理员申请操作
+     */
+    Route::delete(
+        'apply_delete/:token',
+        'right_module/v3.controller.ApplyController/applyDel'
     );
     /**
      * 传值方式：POST 路由功能：执行添加管理员操作

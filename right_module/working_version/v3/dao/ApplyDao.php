@@ -10,7 +10,7 @@
 namespace app\right_module\working_version\v3\dao;
 use  app\right_module\working_version\v3\model\ApplyModel;
 
-class ApplyDao implements ApplyInterface
+class ApplyDao
 {
     /**
      * 名  称 : applySelect()
@@ -40,19 +40,21 @@ class ApplyDao implements ApplyInterface
      * 输  入 : (string) $token => '项目小程序用户标识';
      * 输  入 : (string) $name  => '用户名称';
      * 输  入 : (string) $phone => '用户电话';
+     * 输  入 : (string) $formId => '表单ID';
      * 输  出 : [ 'msg'=>'success', 'data'=>true ]
      * 输  出 : [ 'msg'=>'error'  , 'data'=>false ]
      * 创  建 : 2018/06/16 14:09
      */
-    public function applyCreate($token,$name,$phone)
+    public function applyCreate($token,$name,$phone,$formId)
     {
         // 实例化数据库模型
         $applyModel = new ApplyModel;
         // 处理数据
-        $applyModel->apply_token = $token;
-        $applyModel->apply_name  = $name;
-        $applyModel->apply_phone = $phone;
-        $applyModel->apply_time  = time();
+        $applyModel->apply_token  = $token;
+        $applyModel->apply_name   = $name;
+        $applyModel->apply_phone  = $phone;
+        $applyModel->apply_formid = $formId;
+        $applyModel->apply_time   = time();
         // 写入数据库
         $res = $applyModel->save();
         // 判断是否写入成功
